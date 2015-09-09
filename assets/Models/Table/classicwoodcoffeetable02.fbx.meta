@@ -1,0 +1,120 @@
+fileFormatVersion: 2
+guid: 971154065c6f71b448758e7c327caebe
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Rectangle107
+    100004: Rectangle292
+    100006: Rectangle293
+    100008: Rectangle294
+    100010: Rectangle33
+    100012: Rectangle34
+    100014: Rectangle35
+    100016: Rectangle36
+    100018: Rectangle39
+    100020: Rectangle40
+    400000: //RootNode
+    400002: Rectangle107
+    400004: Rectangle292
+    400006: Rectangle293
+    400008: Rectangle294
+    400010: Rectangle33
+    400012: Rectangle34
+    400014: Rectangle35
+    400016: Rectangle36
+    400018: Rectangle39
+    400020: Rectangle40
+    2300000: Rectangle107
+    2300002: Rectangle292
+    2300004: Rectangle293
+    2300006: Rectangle294
+    2300008: Rectangle33
+    2300010: Rectangle34
+    2300012: Rectangle35
+    2300014: Rectangle36
+    2300016: Rectangle39
+    2300018: Rectangle40
+    3300000: Rectangle107
+    3300002: Rectangle292
+    3300004: Rectangle293
+    3300006: Rectangle294
+    3300008: Rectangle33
+    3300010: Rectangle34
+    3300012: Rectangle35
+    3300014: Rectangle36
+    3300016: Rectangle39
+    3300018: Rectangle40
+    4300000: Rectangle292
+    4300002: Rectangle293
+    4300004: Rectangle294
+    4300006: Rectangle107
+    4300008: Rectangle36
+    4300010: Rectangle39
+    4300012: Rectangle33
+    4300014: Rectangle34
+    4300016: Rectangle35
+    4300018: Rectangle40
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
