@@ -2,6 +2,7 @@
 using System;
 using Npgsql;
 using System.Collections;
+using System.Collections.Generic;
 
 public class DatabaseHandler {
 
@@ -21,6 +22,49 @@ public class DatabaseHandler {
 			connection.Close();
 			Debug.LogError("Unable to connect to database");
 		}
+	}
+
+	// Find particular player id
+	public static int getPlayerId(string name, DateTime birthday) {
+		connectToDatabase ();
+
+		NpgsqlCommand command = new NpgsqlCommand ("select id from players where name=:name and birthday=:birthday", connection);
+
+		command.Parameters.Add (new NpgsqlParameter ("name", NpgsqlTypes.NpgsqlDbType.Varchar));
+		command.Parameters.Add (new NpgsqlParameter ("birthday", NpgsqlTypes.NpgsqlDbType.Date));
+
+		command.Parameters [0].Value = name;
+		command.Parameters [1].Value = birthday;
+
+		int id = (int)command.ExecuteScalar ();
+		Debug.Log ("ID: " + id.ToString());
+
+		closeConnection ();
+		return id;
+	}
+
+	// TODO: Get all players in database; make a player class to store player objects
+	// Return type should be ArrayList<Player>
+	public static List<Player> getAllPlayers() {
+		List<Player> players = new List<Player>();
+		connectToDatabase ();
+
+		NpgsqlCommand command = new NpgsqlCommand ("select * from players", connection);
+		NpgsqlDataReader reader = command.ExecuteReader ();
+
+		while (reader.Read()) {
+			Player p = new Player ();
+			p.name = (string)reader ["name"];
+			DateTime bDay;
+			DateTime.TryParse(reader["birthday"].ToString(), out bDay);
+			p.birthday = bDay;
+			Debug.Log (bDay);
+			p.id = (int)reader ["id"];
+			players.Add(p);
+		}
+
+		closeConnection ();
+		return players;
 	}
 
 	public static void insertPlayer(string name, DateTime birthday) {

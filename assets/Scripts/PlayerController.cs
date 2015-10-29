@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System;
 
 public class PlayerController : MonoBehaviour {
@@ -7,8 +8,6 @@ public class PlayerController : MonoBehaviour {
 	void Start () {
 		player = GameObject.Find("Player");
 		rigidBody = player.GetComponent<Rigidbody>();
-		//DatabaseHandler.insertPlayer ("Jack", DateTime.Now);
-		DatabaseHandler.insertGame ("Race", 12, 14, 15, 16, 10, 12, 3, "Hard", 1, 4);
 	}
 	
 	// Update is called once per frame
