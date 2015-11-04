@@ -15,6 +15,7 @@ public class MenuControlScript : MonoBehaviour
 		player = GameObject.Find ("Player");
 		titleMenu = GameObject.Find ("TitleMenu");
 		inField = titleMenu.GetComponentInChildren<InputField> ();
+
 	
 	}
 
