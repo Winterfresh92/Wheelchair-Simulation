@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using System;
@@ -8,6 +9,9 @@ public class PlayerController : MonoBehaviour {
 	void Start () {
 		player = GameObject.Find("Player");
 		rigidBody = player.GetComponent<Rigidbody>();
+		currentLap = 0;
+		text = GetComponent<Text> ();
+		setLapText ();
 	}
 	
 	// Update is called once per frame
@@ -30,8 +34,26 @@ public class PlayerController : MonoBehaviour {
 		}
 		
 	}
-	
+
+	void OnTriggerEnter(Collider collider) {
+		Debug.Log("Hit " + collider.gameObject.name);
+		if (collider.gameObject.name == "Cube") {
+			currentLap += 1;
+			setLapText();
+			if(currentLap > 1) {
+				text.text = "You've completed the race!";
+			}
+		}
+	}
+
+	void setLapText() {
+		text.text = "Lap: " + currentLap.ToString ();
+	}
+
+	public Text text;
+
 	private GameObject player;
+	private int currentLap;
 	private Rigidbody rigidBody;
 	private float force = 6;
 	private float turnForce;
