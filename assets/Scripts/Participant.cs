@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 
-public class Participant : MonoBehaviour {
+public class Participant {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	public GameObject gameObject;
+	public DateTime finishTime;
+
+	public int currentLap;
+
+	public Participant(GameObject gameObject) {
+		this.gameObject = gameObject;
+		currentLap = 0;
 	}
 }

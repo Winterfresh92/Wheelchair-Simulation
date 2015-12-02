@@ -8,9 +8,10 @@ public class PlayerController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		player = GameObject.Find("Player");
+		canvas = GameObject.Find ("Canvas");
 		rigidBody = player.GetComponent<Rigidbody>();
-		currentLap = 0;
-		text = GetComponent<Text> ();
+		text = canvas.GetComponentInChildren<Text> ();
+		race = Race.Instance ();
 		setLapText ();
 	}
 	
@@ -32,28 +33,32 @@ public class PlayerController : MonoBehaviour {
 		if((horizontalInput > 0 || horizontalInput < 0)){
 			rigidBody.AddTorque(hAcceleration, ForceMode.Acceleration);
 		}
+		race.Update();
 		
 	}
 
 	void OnTriggerEnter(Collider collider) {
 		Debug.Log("Hit " + collider.gameObject.name);
 		if (collider.gameObject.name == "Cube") {
-			currentLap += 1;
+			race.participants[0].currentLap += 1;
 			setLapText();
-			if(currentLap > 1) {
+			if(race.participants[0].currentLap > 1) {
+				race.participants[0].finishTime = DateTime.Now;
 				text.text = "You've completed the race!";
 			}
 		}
 	}
 
 	void setLapText() {
-		text.text = "Lap: " + currentLap.ToString ();
+		text.text = "Lap: " + race.participants[0].currentLap.ToString ();
 	}
 
 	public Text text;
 
 	private GameObject player;
-	private int currentLap;
+	private GameObject canvas;
+	private Participant participant;
+	public Race race;
 	private Rigidbody rigidBody;
 	private float force = 6;
 	private float turnForce;
