@@ -44,8 +44,8 @@ public class Race : MonoBehaviour {
 		if (raceOver) {
 			Debug.Log(participants[winner].gameObject.name + " won!");
 		}
-		if (participants [0].finishTime != DateTime.MinValue || participants[1].finishTime != DateTime.MinValue) {
-			if (participants [0].finishTime > participants [1].finishTime) {
+		if (participants [0].finishTime != DateTime.MaxValue || participants[1].finishTime != DateTime.MaxValue) {
+			if (participants [0].finishTime < participants [1].finishTime) {
 				Debug.Log ("Player Wins!");
 			} else {
 				Debug.Log ("Player Loses...");

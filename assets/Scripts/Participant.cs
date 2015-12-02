@@ -12,5 +12,6 @@ public class Participant {
 	public Participant(GameObject gameObject) {
 		this.gameObject = gameObject;
 		currentLap = 0;
+		finishTime = DateTime.MaxValue;
 	}
 }
