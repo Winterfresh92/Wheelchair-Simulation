@@ -7,7 +7,7 @@ using System;
 public class PlayerController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
-		player = GameObject.Find("Player");
+		player = GameObject.Find ("Player");
 		canvas = GameObject.Find ("Canvas");
 		rigidBody = player.GetComponent<Rigidbody>();
 		text = canvas.GetComponentInChildren<Text> ();
@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		
 		float verticalInput = Input.GetAxis ("Vertical");
 		float horizontalInput = Input.GetAxis("Horizontal");
 		if (verticalInput < 0) {
@@ -34,7 +33,6 @@ public class PlayerController : MonoBehaviour {
 			rigidBody.AddTorque(hAcceleration, ForceMode.Acceleration);
 		}
 		race.Update();
-		
 	}
 
 	void OnTriggerEnter(Collider collider) {
