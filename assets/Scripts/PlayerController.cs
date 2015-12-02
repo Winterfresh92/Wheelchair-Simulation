@@ -6,13 +6,23 @@ using System;
 public class PlayerController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
+		pc = GameObject.Find ("Master").GetComponent ("PlayerContainer") as PlayerContainer;
 		player = GameObject.Find("Player");
 		rigidBody = player.GetComponent<Rigidbody>();
 		titleMenu = GameObject.Find ("TitleMenu");
+		arrow = GameObject.Find ("Arrow");
 		if (Application.loadedLevelName != "TitleScreen") {
 			titleMenu.SetActive(false);
+			if(Application.loadedLevelName == "FoodCourt" && pc.race)
+			{
+				Vector3 temp = new Vector3(55.26f, player.transform.position.y, -7.3f);
+				player.transform.position = temp;
+				arrow.SetActive(false);
+				GameObject.Find ("Coin_1").SetActive(false);
+			}
 		}
 		paused = false;
+
 
 	}
 	
@@ -43,13 +53,16 @@ public class PlayerController : MonoBehaviour {
 			titleMenu.SetActive(true);
 			pausePlayer();
 		}
-
+        if (arrow.activeSelf) {
+			arrow.transform.LookAt (GameObject.Find ("Coin_1").transform);
+		}
 	}
 
 	public void pausePlayer() {
 		paused = !paused;
 	}
-	
+
+	private PlayerContainer pc;
 	private GameObject titleMenu;
 	private bool paused;
 	private GameObject player;
@@ -58,4 +71,5 @@ public class PlayerController : MonoBehaviour {
 	private float force = 6;
 	private float turnForce;
 	private Vector3 lastVelocity;
+	private GameObject arrow;
 }

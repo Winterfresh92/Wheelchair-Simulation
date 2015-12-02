@@ -25,10 +25,14 @@ public class MainBehavior : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		transform.Rotate (Vector3.up, 20 * Time.deltaTime * 4, Space.World);
+		if (collectCount == 5) {
+
+		}
 	}
 
 	void OnCollisionEnter(Collision col) {
 		tries = 0;
+		collectCount++;
 		do {
 			tmp.Set (Random.Range (-115, 75),coin.transform.position.y,Random.Range (-100, 86));
 			result = Physics.OverlapSphere (tmp, 2f);
