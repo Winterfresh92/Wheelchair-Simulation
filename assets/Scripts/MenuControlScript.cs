@@ -38,10 +38,12 @@ public class MenuControlScript : MonoBehaviour
 			if (Application.loadedLevelName != "TitleScreen") {
 				pause ();
 			}
-			master.Player = new Player();
-			master.Player.birthday = DateTime.Today;
-			master.Player.name = inField.text;
-			DatabaseHandler.insertPlayer(master.Player.name, master.Player.birthday);
+			if (Application.loadedLevelName == "TitleScreen") {
+				master.Player = new Player();
+				master.Player.birthday = DateTime.Today;
+				master.Player.name = inField.text;
+				DatabaseHandler.insertPlayer(master.Player.name, master.Player.birthday);
+			}
 			titleMenu.SetActive(false);
 			return true;
 		}

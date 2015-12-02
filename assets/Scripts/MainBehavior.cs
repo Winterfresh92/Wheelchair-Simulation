@@ -25,7 +25,7 @@ public class MainBehavior : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		transform.Rotate (Vector3.up, 20 * Time.deltaTime * 4, Space.World);
-		if (collectCount == 5) {
+		if (collectCount == 3) {
 
 		}
 	}

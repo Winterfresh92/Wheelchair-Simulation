@@ -28,7 +28,6 @@ public class PlayerController : MonoBehaviour {
 		canvas = GameObject.Find ("Canvas");
 		text = canvas.GetComponentInChildren<Text> ();
 		race = Race.Instance ();
-		setLapText ();
 	}
 	
 	// Update is called once per frame
@@ -58,8 +57,6 @@ public class PlayerController : MonoBehaviour {
 				pausePlayer();
 			}
 
-			race.Update();
-
 		}
         if (arrow.activeSelf) {
 			arrow.transform.LookAt (GameObject.Find ("Coin_1").transform);
@@ -78,18 +75,13 @@ public class PlayerController : MonoBehaviour {
 
 	void OnTriggerEnter(Collider collider) {
 		Debug.Log("Hit " + collider.gameObject.name);
-		if (collider.gameObject.name == "Cube") {
+		if (collider.gameObject.name == "Starting Line") {
 			race.participants[0].currentLap += 1;
-			setLapText();
+			Debug.Log (race.participants[0].currentLap);
 			if(race.participants[0].currentLap > 1) {
 				race.participants[0].finishTime = DateTime.Now;
-				text.text = "You've completed the race!";
 			}
 		}
-	}
-
-	void setLapText() {
-		text.text = "Lap: " + race.participants[0].currentLap.ToString ();
 	}
 
 	public Text text;

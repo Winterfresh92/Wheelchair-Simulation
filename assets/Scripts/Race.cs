@@ -9,7 +9,9 @@ public class Race : MonoBehaviour {
 	protected DateTime startTime;
 	protected List<DateTime> finishTimes;
 	protected int winner;
-	protected bool raceOver;
+	public bool raceOver;
+	public bool pushedToDatabase;
+	private PlayerContainer master;
 
 	private static Race race;
 
@@ -23,6 +25,7 @@ public class Race : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		master = GameObject.Find ("Master").GetComponent<PlayerContainer> ();
 		this.participants = new List<Participant> ();
 		participants.Add(new Participant(GameObject.Find("Player")));
 
@@ -36,19 +39,30 @@ public class Race : MonoBehaviour {
 		}
 		winner = 0;
 		raceOver = false;
+		pushedToDatabase = false;
 		startTime = DateTime.Now;
 	}
 	
 	// Update is called once per frame
-	public void Update () {
-		if (raceOver) {
-			Debug.Log(participants[winner].gameObject.name + " won!");
+	void Update () {
+		if (raceOver && !pushedToDatabase) {
+			Debug.Log (participants [winner].gameObject.name + " won!");
+			TimeSpan raceTime = participants [winner].finishTime - startTime;
+			int won = winner == 0 ? 1 : 0;
+			DatabaseHandler.insertGame ("Race", (float)raceTime.TotalSeconds, 0, (float)raceTime.TotalSeconds, 0, 0, 0, 0, "Easy", won, DatabaseHandler.getPlayerId (master.Player.name, master.Player.birthday));
+			pushedToDatabase = true;
 		}
-		if (participants [0].finishTime != DateTime.MaxValue || participants[1].finishTime != DateTime.MaxValue) {
-			if (participants [0].finishTime < participants [1].finishTime) {
-				Debug.Log ("Player Wins!");
-			} else {
-				Debug.Log ("Player Loses...");
+		if (!raceOver) {
+			if (participants [0].finishTime != DateTime.MaxValue || participants [1].finishTime != DateTime.MaxValue) {
+				if (participants [0].finishTime < participants [1].finishTime) {
+					Debug.Log ("Player Wins!");
+					winner = 0;
+					raceOver = true;
+				} else {
+					Debug.Log ("Player Loses...");
+					winner = 1;
+					raceOver = true;
+				}
 			}
 		}
 	}
