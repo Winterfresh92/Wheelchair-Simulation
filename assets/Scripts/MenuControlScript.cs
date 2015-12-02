@@ -16,9 +16,16 @@ public class MenuControlScript : MonoBehaviour
 		master = GameObject.Find ("Master").GetComponent("PlayerContainer") as PlayerContainer;
 		player = GameObject.Find ("Player");
 		titleMenu = GameObject.Find ("TitleMenu");
+
 		inField = titleMenu.GetComponentInChildren<InputField> ();
 		if (master.Player != null) {
 			inField.text = master.Player.name;
+		}
+		if (master.race) {
+			GameObject.Find("RawImage").SetActive(false);
+		}
+		if (Application.loadedLevelName == "FoodCourt") {
+			GameObject.Find("RawImage").transform.position = new Vector3 (Screen.width - 70, Screen.height - 50, 0);
 		}
 	}
 

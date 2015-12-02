@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using System;
@@ -53,14 +54,17 @@ public class PlayerController : MonoBehaviour {
 			titleMenu.SetActive(true);
 			pausePlayer();
 		}
-        if (arrow.activeSelf) {
+        if (Application.loadedLevelName == "FoodCourt" && arrow.activeSelf) {
 			arrow.transform.LookAt (GameObject.Find ("Coin_1").transform);
 		}
-	}
 
+	}
+	
 	public void pausePlayer() {
 		paused = !paused;
 	}
+
+
 
 	private PlayerContainer pc;
 	private GameObject titleMenu;
@@ -72,4 +76,6 @@ public class PlayerController : MonoBehaviour {
 	private float turnForce;
 	private Vector3 lastVelocity;
 	private GameObject arrow;
+
+
 }
