@@ -15,8 +15,6 @@ public class MenuControlScript : MonoBehaviour
 		player = GameObject.Find ("Player");
 		titleMenu = GameObject.Find ("TitleMenu");
 		inField = titleMenu.GetComponentInChildren<InputField> ();
-
-	
 	}
 
 	// Update is called once per frame
@@ -28,14 +26,14 @@ public class MenuControlScript : MonoBehaviour
 	private bool checkInputBox ()
 	{
 		if (inField.text == "") {
-			titleMenu.SetActive (true);
+			titleMenu.SetActive(true);
 			inField.placeholder.GetComponent<Text> ().text = "You must enter your name!";
 			return false;
 		} else {
 			if (Application.loadedLevelName != "TitleScreen") {
 				pause ();
 			}
-			titleMenu.SetActive (false);
+			titleMenu.SetActive(false);
 			return true;
 		}
 	}
@@ -62,6 +60,7 @@ public class MenuControlScript : MonoBehaviour
 			}
 		}
 	}
+
 
 	public void exit ()
 	{

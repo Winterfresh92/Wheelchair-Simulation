@@ -9,9 +9,10 @@ public class PlayerController : MonoBehaviour {
 		player = GameObject.Find("Player");
 		rigidBody = player.GetComponent<Rigidbody>();
 		titleMenu = GameObject.Find ("TitleMenu");
-		titleMenu.SetActive(false);
-
-
+		if (Application.loadedLevelName != "TitleScreen") {
+			titleMenu.SetActive(false);
+		}
+		paused = false;
 
 	}
 	
@@ -38,7 +39,7 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 
-		if (Input.GetKey (KeyCode.Escape)) {
+		if (Input.GetKey (KeyCode.Escape) && paused == false && !titleMenu.activeSelf) {
 			titleMenu.SetActive(true);
 			pausePlayer();
 		}
