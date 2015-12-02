@@ -55,20 +55,16 @@ public class MenuControlScript : MonoBehaviour
 	public void OnRaceClicked()
 	{
 		if (checkInputBox ()) {
-			if (Application.loadedLevelName != "FoodCourt") {
 				master.race = true;
 				Application.LoadLevel ("FoodCourt");
-			}
 		}
 	}
 
 	public void OnObstacleCourseClicked ()
 	{
 		if (checkInputBox ()) {
-			if (Application.loadedLevelName != "FoodCourt") {
 				master.race = false;
 				Application.LoadLevel ("FoodCourt");
-			}
 		}
 	}
 
